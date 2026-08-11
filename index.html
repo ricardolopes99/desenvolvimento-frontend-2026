@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quadro de Tarefas</title>
+</head>
+<body>
+
+  <header>
+    <h1>Quadro de Tarefas</h1>
+  </header>
+
+  <main>
+
+    <section aria-labelledby="titulo-busca-filtros">
+      <h2 id="titulo-busca-filtros">Busca e filtros</h2>
+
+      <form>
+        <div>
+          <label for="busca-titulo">Buscar por título da tarefa</label>
+          <input type="search" id="busca-titulo" name="busca-titulo">
+        </div>
+
+        <fieldset>
+          <legend>Filtrar por status</legend>
+
+          <input type="radio" id="status-todos" name="filtro-status" value="todos" checked>
+          <label for="status-todos">Todos</label>
+
+          <input type="radio" id="status-a-fazer" name="filtro-status" value="a-fazer">
+          <label for="status-a-fazer">A fazer</label>
+
+          <input type="radio" id="status-em-andamento" name="filtro-status" value="em-andamento">
+          <label for="status-em-andamento">Em andamento</label>
+
+          <input type="radio" id="status-em-revisao" name="filtro-status" value="em-revisao">
+          <label for="status-em-revisao">Em revisão</label>
+
+          <input type="radio" id="status-concluida" name="filtro-status" value="concluida">
+          <label for="status-concluida">Concluída</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Filtrar por prioridade</legend>
+
+          <input type="radio" id="prioridade-todas" name="filtro-prioridade" value="todas" checked>
+          <label for="prioridade-todas">Todas</label>
+
+          <input type="radio" id="prioridade-baixa" name="filtro-prioridade" value="baixa">
+          <label for="prioridade-baixa">Baixa</label>
+
+          <input type="radio" id="prioridade-media" name="filtro-prioridade" value="media">
+          <label for="prioridade-media">Média</label>
+
+          <input type="radio" id="prioridade-alta" name="filtro-prioridade" value="alta">
+          <label for="prioridade-alta">Alta</label>
+        </fieldset>
+      </form>
+    </section>
+
+    <section aria-labelledby="titulo-a-fazer">
+      <h2 id="titulo-a-fazer">A fazer</h2>
+      <ul>
+        <li>
+          <article aria-labelledby="tarefa-1-titulo">
+            <h3 id="tarefa-1-titulo">Levantar requisitos do sistema</h3>
+            <p>Projeto: Sistema de Biblioteca</p>
+            <p>Responsável: Ana Souza</p>
+            <p>Prazo: 15/08/2026</p>
+            <p>Prioridade: Alta</p>
+          </article>
+        </li>
+        <li>
+          <article aria-labelledby="tarefa-2-titulo">
+            <h3 id="tarefa-2-titulo">Criar wireframes das telas</h3>
+            <p>Projeto: Sistema de Biblioteca</p>
+            <p>Responsável: Carlos Lima</p>
+            <p>Prazo: 18/08/2026</p>
+            <p>Prioridade: Média</p>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="titulo-em-andamento">
+      <h2 id="titulo-em-andamento">Em andamento</h2>
+      <ul>
+        <li>
+          <article aria-labelledby="tarefa-3-titulo">
+            <h3 id="tarefa-3-titulo">Modelar banco de dados</h3>
+            <p>Projeto: Sistema de Biblioteca</p>
+            <p>Responsável: Ana Souza</p>
+            <p>Prazo: 20/08/2026</p>
+            <p>Prioridade: Alta</p>
+          </article>
+        </li>
+        <li>
+          <article aria-labelledby="tarefa-4-titulo">
+            <h3 id="tarefa-4-titulo">Implementar autenticação de usuários</h3>
+            <p>Projeto: App de Finanças Pessoais</p>
+            <p>Responsável: Beatriz Alves</p>
+            <p>Prazo: 22/08/2026</p>
+            <p>Prioridade: Alta</p>
+          </article>
+        </li>
+        <li>
+          <article aria-labelledby="tarefa-5-titulo">
+            <h3 id="tarefa-5-titulo">Escrever testes unitários do módulo de login</h3>
+            <p>Projeto: App de Finanças Pessoais</p>
+            <p>Responsável: Diego Ferreira</p>
+            <p>Prazo: 25/08/2026</p>
+            <p>Prioridade: Média</p>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="titulo-em-revisao">
+      <h2 id="titulo-em-revisao">Em revisão</h2>
+      <ul>
+        <li>
+          <article aria-labelledby="tarefa-6-titulo">
+            <h3 id="tarefa-6-titulo">Revisar layout da tela de login</h3>
+            <p>Projeto: App de Finanças Pessoais</p>
+            <p>Responsável: Carlos Lima</p>
+            <p>Prazo: 14/08/2026</p>
+            <p>Prioridade: Baixa</p>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="titulo-concluida">
+      <h2 id="titulo-concluida">Concluída</h2>
+      <ul>
+        <li>
+          <article aria-labelledby="tarefa-7-titulo">
+            <h3 id="tarefa-7-titulo">Configurar repositório do projeto</h3>
+            <p>Projeto: Sistema de Biblioteca</p>
+            <p>Responsável: Diego Ferreira</p>
+            <p>Prazo: 10/08/2026</p>
+            <p>Prioridade: Média</p>
+          </article>
+        </li>
+        <li>
+          <article aria-labelledby="tarefa-8-titulo">
+            <h3 id="tarefa-8-titulo">Definir paleta de cores e identidade visual</h3>
+            <p>Projeto: App de Finanças Pessoais</p>
+            <p>Responsável: Beatriz Alves</p>
+            <p>Prazo: 09/08/2026</p>
+            <p>Prioridade: Baixa</p>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Ricardo Augusto Lopes Barbosa — Desenvolvimento Frontend, 2026.2</p>
+  </footer>
+
+</body>
+</html>
