@@ -1,0 +1,388 @@
+/* ==========================================================================
+   E2 — Layout responsivo com Flexbox e Grid
+   Desenvolvimento Frontend — 2026.2
+
+   Metodologia: mobile-first. Tudo abaixo desta seção de tokens é escrito
+   primeiro para a tela estreita, sem nenhuma media query. As media queries
+   aparecem só no fim do arquivo, cada uma com min-width, cada uma comentada
+   dizendo qual aspecto do conteúdo quebrou naquele ponto.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Reset mínimo
+   -------------------------------------------------------------------------- */
+
+* ,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Design tokens
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* Cores de superfície, texto e borda */
+  --cor-fundo: #f3f4f7;
+  --cor-superficie: #ffffff;
+  --cor-texto: #1c2130;
+  --cor-texto-suave: #4b5265;
+  --cor-borda: #d7dae1;
+  --cor-foco: #1d4ed8;
+
+  /* Uma cor por status (usadas como acento e como badge de cor sólida) */
+  --cor-status-a-fazer: #1d4ed8;
+  --cor-status-em-andamento: #92400e;
+  --cor-status-em-revisao: #6d28d9;
+  --cor-status-concluida: #166534;
+
+  /* Uma cor por prioridade */
+  --cor-prioridade-alta: #b91c1c;
+  --cor-prioridade-media: #92400e;
+  --cor-prioridade-baixa: #374151;
+
+  /* Escala de espaçamento (5 níveis) */
+  --espaco-1: 0.25rem;
+  --espaco-2: 0.5rem;
+  --espaco-3: 1rem;
+  --espaco-4: 1.5rem;
+  --espaco-5: 2.5rem;
+
+  /* Raio de canto */
+  --raio: 0.5rem;
+
+  /* Largura máxima de leitura em telas muito largas */
+  --largura-maxima: 90rem;
+}
+
+/* --------------------------------------------------------------------------
+   Base tipográfica e de página (mobile-first: tela estreita)
+   -------------------------------------------------------------------------- */
+
+html {
+  /* Sem tamanho fixo em px: respeita a config. de fonte do usuário */
+  font-size: 100%;
+}
+
+body {
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+/* Foco visível em qualquer elemento focável, em qualquer lugar da página.
+   Se em algum momento o outline nativo for removido de um elemento
+   específico, este é o substituto — nunca removemos sem repor. */
+:focus-visible {
+  outline: 3px solid var(--cor-foco);
+  outline-offset: 2px;
+  border-radius: var(--raio);
+}
+
+header,
+main,
+footer {
+  width: 100%;
+  max-width: var(--largura-maxima);
+  margin-inline: auto;
+  padding-inline: var(--espaco-3);
+}
+
+header {
+  padding-block: var(--espaco-3);
+}
+
+header h1 {
+  /* clamp() combinando rem e vw: cresce com a tela sem media query */
+  font-size: clamp(1.375rem, 1.1rem + 1.2vw, 2rem);
+  margin: 0;
+}
+
+footer {
+  padding-block: var(--espaco-4);
+  color: var(--cor-texto-suave);
+  font-size: 0.875rem;
+}
+
+/* --------------------------------------------------------------------------
+   Estrutura geral do quadro (main)
+   Mobile: uma coluna só, tudo empilhado com gap.
+   -------------------------------------------------------------------------- */
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-4);
+  padding-block: var(--espaco-3) var(--espaco-5);
+}
+
+/* --------------------------------------------------------------------------
+   Seção de busca e filtros
+   -------------------------------------------------------------------------- */
+
+.secao-busca {
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: var(--espaco-3);
+}
+
+.secao-busca h2 {
+  margin-block: 0 var(--espaco-3);
+  font-size: 1.125rem;
+}
+
+.secao-busca form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-3);
+}
+
+.secao-busca label {
+  display: block;
+  margin-bottom: var(--espaco-1);
+  font-size: 0.9375rem;
+}
+
+.secao-busca input[type="search"] {
+  width: 100%;
+  min-width: 0;
+  padding: var(--espaco-2) var(--espaco-2);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  font-size: 1rem;
+  color: var(--cor-texto);
+  background-color: var(--cor-superficie);
+}
+
+fieldset {
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: var(--espaco-2) var(--espaco-3) var(--espaco-3);
+  margin: 0;
+}
+
+legend {
+  padding-inline: var(--espaco-1);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cor-texto-suave);
+}
+
+/* Mobile: opções de filtro empilhadas em coluna, uma por linha */
+fieldset > div,
+fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaco-2) var(--espaco-3);
+  align-items: center;
+}
+
+/* Cada radio + seu label formam um par com alvo de clique confortável.
+   accent-color estiliza o próprio radio sem substituí-lo por elemento
+   decorativo, então o foco nativo do teclado continua funcionando. */
+fieldset input[type="radio"] {
+  /* 1.5rem = 24px: o mínimo de alvo de clique, aplicado ao próprio input,
+     não só à área do label ao lado */
+  width: 1.5rem;
+  height: 1.5rem;
+  accent-color: var(--cor-foco);
+  flex-shrink: 0;
+}
+
+fieldset label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.5rem;
+  padding-block: var(--espaco-1);
+  font-size: 0.9375rem;
+}
+
+/* --------------------------------------------------------------------------
+   Colunas de status
+   -------------------------------------------------------------------------- */
+
+.coluna-status {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: var(--espaco-3);
+  /* referência de cor da coluna, definida por modificador abaixo */
+  --cor-coluna: var(--cor-status-a-fazer);
+  border-top: 4px solid var(--cor-coluna);
+}
+
+.coluna-status--a-fazer {
+  --cor-coluna: var(--cor-status-a-fazer);
+}
+
+.coluna-status--em-andamento {
+  --cor-coluna: var(--cor-status-em-andamento);
+}
+
+.coluna-status--em-revisao {
+  --cor-coluna: var(--cor-status-em-revisao);
+}
+
+.coluna-status--concluida {
+  --cor-coluna: var(--cor-status-concluida);
+}
+
+.coluna-status h2 {
+  margin-block: 0 var(--espaco-3);
+  font-size: 1rem;
+  color: var(--cor-coluna);
+}
+
+/* Lista de tarefas dentro de cada coluna: Flexbox em direção vertical */
+.lista-tarefas {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-3);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Cartão de tarefa — organizado internamente por Flexbox
+   -------------------------------------------------------------------------- */
+
+.cartao {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-1);
+  background-color: var(--cor-fundo);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: var(--espaco-3);
+  min-height: 8rem;
+}
+
+.cartao h3 {
+  order: 1;
+  /* título ocupa o espaço livre do cartão */
+  flex: 1 1 auto;
+  margin: 0 0 var(--espaco-1);
+  font-size: 1rem;
+  line-height: 1.3;
+
+  /* truncamento com reticências: exige min-width: 0 num item flex,
+     senão o item nunca encolhe além do tamanho do texto */
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.cartao p {
+  order: 2;
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--cor-texto-suave);
+}
+
+/* Prioridade fica visível, logo abaixo dos dados do cartão */
+.cartao__prioridade {
+  order: 3;
+  font-weight: 600;
+}
+
+.cartao__prioridade--alta {
+  color: var(--cor-prioridade-alta);
+}
+
+.cartao__prioridade--media {
+  color: var(--cor-prioridade-media);
+}
+
+.cartao__prioridade--baixa {
+  color: var(--cor-prioridade-baixa);
+}
+
+/* Prazo é o último item e fica preso na base do cartão: margin-top: auto
+   empurra ele (e só ele, por ser o último) para o fim do eixo principal
+   do flex, mesmo quando o cartão tem altura sobrando. */
+.cartao__prazo {
+  order: 4;
+  margin-top: auto;
+  padding-top: var(--espaco-2);
+  font-weight: 600;
+  color: var(--cor-texto);
+}
+
+/* ==========================================================================
+   Pontos de quebra (mobile-first: só min-width daqui em diante)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   min-width: 40rem (640px)
+   O que quebra abaixo disso: os dois grupos de filtro (status e prioridade)
+   ficam empilhados um embaixo do outro, e junto com a busca a seção ocupa
+   bastante altura de rolagem antes mesmo de chegar ao quadro. As opções
+   dentro de cada fieldset já quebram em duas por linha desde a base mobile
+   (flex-wrap cuida disso sozinho); o que ganha aqui é colocar os dois
+   grupos lado a lado, reduzindo a altura total da seção de filtros.
+   -------------------------------------------------------------------------- */
+@media (min-width: 40rem) {
+  .secao-busca form {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .secao-busca form > div {
+    flex: 1 1 100%;
+  }
+
+  .secao-busca form > fieldset {
+    flex: 1 1 16rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   min-width: 56.25rem (900px)
+   O que quebra abaixo disso: com quatro colunas lado a lado, cada cartão
+   ficaria com menos de ~180px de largura e o texto apertaria demais mesmo
+   truncado. A partir daqui o quadro vira Grid de 4 colunas; abaixo disso
+   as colunas continuam empilhadas (definição do main lá em cima).
+   -------------------------------------------------------------------------- */
+@media (min-width: 56.25rem) {
+  main {
+    display: grid;
+    /* minmax(0, 1fr), não só 1fr: sem o mínimo em 0, o item que ocupa
+       grid-column: 1 / -1 (a busca) empurra as colunas para o tamanho
+       do seu conteúdo interno e o quadro estoura a largura da tela. */
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  .secao-busca {
+    grid-column: 1 / -1;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   min-width: 80rem (1280px)
+   O que quebra abaixo disso: nada quebra tecnicamente, mas em telas muito
+   largas as 4 colunas ficam esticadas e os cartões ganham linhas de texto
+   com espaço em branco excessivo. Aqui só respiramos mais o espaçamento
+   entre colunas e o padding interno dos cartões, sem mudar a estrutura.
+   -------------------------------------------------------------------------- */
+@media (min-width: 80rem) {
+  main {
+    gap: var(--espaco-5);
+  }
+
+  .cartao {
+    padding: var(--espaco-4);
+  }
+}
