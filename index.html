@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quadro de Tarefas</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -13,7 +14,7 @@
 
   <main>
 
-    <section aria-labelledby="titulo-busca-filtros">
+    <section class="secao-busca" aria-labelledby="titulo-busca-filtros">
       <h2 id="titulo-busca-filtros">Busca e filtros</h2>
 
       <form>
@@ -59,97 +60,97 @@
       </form>
     </section>
 
-    <section aria-labelledby="titulo-a-fazer">
+    <section class="coluna-status coluna-status--a-fazer" aria-labelledby="titulo-a-fazer">
       <h2 id="titulo-a-fazer">A fazer</h2>
-      <ul>
+      <ul class="lista-tarefas">
         <li>
-          <article aria-labelledby="tarefa-1-titulo">
+          <article class="cartao" aria-labelledby="tarefa-1-titulo">
             <h3 id="tarefa-1-titulo">Levantar requisitos do sistema</h3>
             <p>Projeto: Sistema de Biblioteca</p>
             <p>Responsável: Ana Souza</p>
-            <p>Prazo: 15/08/2026</p>
-            <p>Prioridade: Alta</p>
+            <p class="cartao__prazo">Prazo: 15/08/2026</p>
+            <p class="cartao__prioridade cartao__prioridade--alta">Prioridade: Alta</p>
           </article>
         </li>
         <li>
-          <article aria-labelledby="tarefa-2-titulo">
+          <article class="cartao" aria-labelledby="tarefa-2-titulo">
             <h3 id="tarefa-2-titulo">Criar wireframes das telas</h3>
             <p>Projeto: Sistema de Biblioteca</p>
             <p>Responsável: Carlos Lima</p>
-            <p>Prazo: 18/08/2026</p>
-            <p>Prioridade: Média</p>
+            <p class="cartao__prazo">Prazo: 18/08/2026</p>
+            <p class="cartao__prioridade cartao__prioridade--media">Prioridade: Média</p>
           </article>
         </li>
       </ul>
     </section>
 
-    <section aria-labelledby="titulo-em-andamento">
+    <section class="coluna-status coluna-status--em-andamento" aria-labelledby="titulo-em-andamento">
       <h2 id="titulo-em-andamento">Em andamento</h2>
-      <ul>
+      <ul class="lista-tarefas">
         <li>
-          <article aria-labelledby="tarefa-3-titulo">
+          <article class="cartao" aria-labelledby="tarefa-3-titulo">
             <h3 id="tarefa-3-titulo">Modelar banco de dados</h3>
             <p>Projeto: Sistema de Biblioteca</p>
             <p>Responsável: Ana Souza</p>
-            <p>Prazo: 20/08/2026</p>
-            <p>Prioridade: Alta</p>
+            <p class="cartao__prazo">Prazo: 20/08/2026</p>
+            <p class="cartao__prioridade cartao__prioridade--alta">Prioridade: Alta</p>
           </article>
         </li>
         <li>
-          <article aria-labelledby="tarefa-4-titulo">
+          <article class="cartao" aria-labelledby="tarefa-4-titulo">
             <h3 id="tarefa-4-titulo">Implementar autenticação de usuários</h3>
             <p>Projeto: App de Finanças Pessoais</p>
             <p>Responsável: Beatriz Alves</p>
-            <p>Prazo: 22/08/2026</p>
-            <p>Prioridade: Alta</p>
+            <p class="cartao__prazo">Prazo: 22/08/2026</p>
+            <p class="cartao__prioridade cartao__prioridade--alta">Prioridade: Alta</p>
           </article>
         </li>
         <li>
-          <article aria-labelledby="tarefa-5-titulo">
+          <article class="cartao" aria-labelledby="tarefa-5-titulo">
             <h3 id="tarefa-5-titulo">Escrever testes unitários do módulo de login</h3>
             <p>Projeto: App de Finanças Pessoais</p>
             <p>Responsável: Diego Ferreira</p>
-            <p>Prazo: 25/08/2026</p>
-            <p>Prioridade: Média</p>
+            <p class="cartao__prazo">Prazo: 25/08/2026</p>
+            <p class="cartao__prioridade cartao__prioridade--media">Prioridade: Média</p>
           </article>
         </li>
       </ul>
     </section>
 
-    <section aria-labelledby="titulo-em-revisao">
+    <section class="coluna-status coluna-status--em-revisao" aria-labelledby="titulo-em-revisao">
       <h2 id="titulo-em-revisao">Em revisão</h2>
-      <ul>
+      <ul class="lista-tarefas">
         <li>
-          <article aria-labelledby="tarefa-6-titulo">
+          <article class="cartao" aria-labelledby="tarefa-6-titulo">
             <h3 id="tarefa-6-titulo">Revisar layout da tela de login</h3>
             <p>Projeto: App de Finanças Pessoais</p>
             <p>Responsável: Carlos Lima</p>
-            <p>Prazo: 14/08/2026</p>
-            <p>Prioridade: Baixa</p>
+            <p class="cartao__prazo">Prazo: 14/08/2026</p>
+            <p class="cartao__prioridade cartao__prioridade--baixa">Prioridade: Baixa</p>
           </article>
         </li>
       </ul>
     </section>
 
-    <section aria-labelledby="titulo-concluida">
+    <section class="coluna-status coluna-status--concluida" aria-labelledby="titulo-concluida">
       <h2 id="titulo-concluida">Concluída</h2>
-      <ul>
+      <ul class="lista-tarefas">
         <li>
-          <article aria-labelledby="tarefa-7-titulo">
+          <article class="cartao" aria-labelledby="tarefa-7-titulo">
             <h3 id="tarefa-7-titulo">Configurar repositório do projeto</h3>
             <p>Projeto: Sistema de Biblioteca</p>
             <p>Responsável: Diego Ferreira</p>
-            <p>Prazo: 10/08/2026</p>
-            <p>Prioridade: Média</p>
+            <p class="cartao__prazo">Prazo: 10/08/2026</p>
+            <p class="cartao__prioridade cartao__prioridade--media">Prioridade: Média</p>
           </article>
         </li>
         <li>
-          <article aria-labelledby="tarefa-8-titulo">
+          <article class="cartao" aria-labelledby="tarefa-8-titulo">
             <h3 id="tarefa-8-titulo">Definir paleta de cores e identidade visual</h3>
             <p>Projeto: App de Finanças Pessoais</p>
             <p>Responsável: Beatriz Alves</p>
-            <p>Prazo: 09/08/2026</p>
-            <p>Prioridade: Baixa</p>
+            <p class="cartao__prazo">Prazo: 09/08/2026</p>
+            <p class="cartao__prioridade cartao__prioridade--baixa">Prioridade: Baixa</p>
           </article>
         </li>
       </ul>
