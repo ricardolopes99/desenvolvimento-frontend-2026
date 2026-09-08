@@ -1,0 +1,17 @@
+// js/dados.js
+// Versão anterior (aula 5), mantida só como referência histórica.
+//
+// A partir da E3 este arquivo NÃO é mais importado por nenhum módulo em
+// execução — os dados agora vêm de dados.json via js/api.js. Se você
+// reimportar isto em algum lugar, o acoplamento com o array local volta.
+
+export const tarefas = [
+  { id: "1", titulo: "Levantar requisitos do sistema", projeto: "Sistema de Biblioteca", responsavel: "Ana Souza", status: "a-fazer", prioridade: "alta", prazo: "15/08/2026" },
+  { id: "2", titulo: "Criar wireframes das telas", projeto: "Sistema de Biblioteca", responsavel: "Carlos Lima", status: "a-fazer", prioridade: "media", prazo: "18/08/2026" },
+  { id: "3", titulo: "Modelar banco de dados", projeto: "Sistema de Biblioteca", responsavel: "Ana Souza", status: "em-andamento", prioridade: "alta", prazo: "20/08/2026" },
+  { id: "4", titulo: "Implementar autenticação de usuários", projeto: "App de Finanças Pessoais", responsavel: "Beatriz Alves", status: "em-andamento", prioridade: "alta", prazo: "22/08/2026" },
+  { id: "5", titulo: "Escrever testes unitários do módulo de login", projeto: "App de Finanças Pessoais", responsavel: "Diego Ferreira", status: "em-andamento", prioridade: "media", prazo: "25/08/2026" },
+  { id: "6", titulo: "Revisar layout da tela de login", projeto: "App de Finanças Pessoais", responsavel: "Carlos Lima", status: "em-revisao", prioridade: "baixa", prazo: "14/08/2026" },
+  { id: "7", titulo: "Configurar repositório do projeto", projeto: "Sistema de Biblioteca", responsavel: "Diego Ferreira", status: "concluida", prioridade: "media", prazo: "10/08/2026" },
+  { id: "8", titulo: "Definir paleta de cores e identidade visual", projeto: "App de Finanças Pessoais", responsavel: "Beatriz Alves", status: "concluida", prioridade: "baixa", prazo: "09/08/2026" },
+];
