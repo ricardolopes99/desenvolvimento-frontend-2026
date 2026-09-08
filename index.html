@@ -8,6 +8,10 @@
 </head>
 <body>
 
+  <!-- Região viva: presente e vazia desde o início do documento, para que
+       leitores de tela já a conheçam antes de qualquer mudança de estado. -->
+  <div id="regiao-status" role="status" aria-live="polite" class="sr-only"></div>
+
   <header>
     <h1>Quadro de Tarefas</h1>
   </header>
@@ -60,107 +64,43 @@
       </form>
     </section>
 
-    <section class="coluna-status coluna-status--a-fazer" aria-labelledby="titulo-a-fazer">
-      <h2 id="titulo-a-fazer">A fazer</h2>
-      <ul class="lista-tarefas">
-        <li>
-          <article class="cartao" aria-labelledby="tarefa-1-titulo">
-            <h3 id="tarefa-1-titulo">Levantar requisitos do sistema</h3>
-            <p>Projeto: Sistema de Biblioteca</p>
-            <p>Responsável: Ana Souza</p>
-            <p class="cartao__prazo">Prazo: 15/08/2026</p>
-            <p class="cartao__prioridade cartao__prioridade--alta">Prioridade: Alta</p>
-          </article>
-        </li>
-        <li>
-          <article class="cartao" aria-labelledby="tarefa-2-titulo">
-            <h3 id="tarefa-2-titulo">Criar wireframes das telas</h3>
-            <p>Projeto: Sistema de Biblioteca</p>
-            <p>Responsável: Carlos Lima</p>
-            <p class="cartao__prazo">Prazo: 18/08/2026</p>
-            <p class="cartao__prioridade cartao__prioridade--media">Prioridade: Média</p>
-          </article>
-        </li>
-      </ul>
-    </section>
+    <!-- Mensagem visível dos estados de carregando / vazio / erro.
+         Começa oculta: só aparece quando um desses três estados é aplicado. -->
+    <p id="mensagem-estado" class="mensagem-estado" hidden></p>
 
-    <section class="coluna-status coluna-status--em-andamento" aria-labelledby="titulo-em-andamento">
-      <h2 id="titulo-em-andamento">Em andamento</h2>
-      <ul class="lista-tarefas">
-        <li>
-          <article class="cartao" aria-labelledby="tarefa-3-titulo">
-            <h3 id="tarefa-3-titulo">Modelar banco de dados</h3>
-            <p>Projeto: Sistema de Biblioteca</p>
-            <p>Responsável: Ana Souza</p>
-            <p class="cartao__prazo">Prazo: 20/08/2026</p>
-            <p class="cartao__prioridade cartao__prioridade--alta">Prioridade: Alta</p>
-          </article>
-        </li>
-        <li>
-          <article class="cartao" aria-labelledby="tarefa-4-titulo">
-            <h3 id="tarefa-4-titulo">Implementar autenticação de usuários</h3>
-            <p>Projeto: App de Finanças Pessoais</p>
-            <p>Responsável: Beatriz Alves</p>
-            <p class="cartao__prazo">Prazo: 22/08/2026</p>
-            <p class="cartao__prioridade cartao__prioridade--alta">Prioridade: Alta</p>
-          </article>
-        </li>
-        <li>
-          <article class="cartao" aria-labelledby="tarefa-5-titulo">
-            <h3 id="tarefa-5-titulo">Escrever testes unitários do módulo de login</h3>
-            <p>Projeto: App de Finanças Pessoais</p>
-            <p>Responsável: Diego Ferreira</p>
-            <p class="cartao__prazo">Prazo: 25/08/2026</p>
-            <p class="cartao__prioridade cartao__prioridade--media">Prioridade: Média</p>
-          </article>
-        </li>
-      </ul>
-    </section>
+    <!-- Quadro de colunas: começa vazio, js/renderizacao.js preenche as
+         listas quando o estado de sucesso é aplicado. -->
+    <div id="quadro-status">
 
-    <section class="coluna-status coluna-status--em-revisao" aria-labelledby="titulo-em-revisao">
-      <h2 id="titulo-em-revisao">Em revisão</h2>
-      <ul class="lista-tarefas">
-        <li>
-          <article class="cartao" aria-labelledby="tarefa-6-titulo">
-            <h3 id="tarefa-6-titulo">Revisar layout da tela de login</h3>
-            <p>Projeto: App de Finanças Pessoais</p>
-            <p>Responsável: Carlos Lima</p>
-            <p class="cartao__prazo">Prazo: 14/08/2026</p>
-            <p class="cartao__prioridade cartao__prioridade--baixa">Prioridade: Baixa</p>
-          </article>
-        </li>
-      </ul>
-    </section>
+      <section class="coluna-status coluna-status--a-fazer" aria-labelledby="titulo-a-fazer">
+        <h2 id="titulo-a-fazer">A fazer</h2>
+        <ul class="lista-tarefas"></ul>
+      </section>
 
-    <section class="coluna-status coluna-status--concluida" aria-labelledby="titulo-concluida">
-      <h2 id="titulo-concluida">Concluída</h2>
-      <ul class="lista-tarefas">
-        <li>
-          <article class="cartao" aria-labelledby="tarefa-7-titulo">
-            <h3 id="tarefa-7-titulo">Configurar repositório do projeto</h3>
-            <p>Projeto: Sistema de Biblioteca</p>
-            <p>Responsável: Diego Ferreira</p>
-            <p class="cartao__prazo">Prazo: 10/08/2026</p>
-            <p class="cartao__prioridade cartao__prioridade--media">Prioridade: Média</p>
-          </article>
-        </li>
-        <li>
-          <article class="cartao" aria-labelledby="tarefa-8-titulo">
-            <h3 id="tarefa-8-titulo">Definir paleta de cores e identidade visual</h3>
-            <p>Projeto: App de Finanças Pessoais</p>
-            <p>Responsável: Beatriz Alves</p>
-            <p class="cartao__prazo">Prazo: 09/08/2026</p>
-            <p class="cartao__prioridade cartao__prioridade--baixa">Prioridade: Baixa</p>
-          </article>
-        </li>
-      </ul>
-    </section>
+      <section class="coluna-status coluna-status--em-andamento" aria-labelledby="titulo-em-andamento">
+        <h2 id="titulo-em-andamento">Em andamento</h2>
+        <ul class="lista-tarefas"></ul>
+      </section>
+
+      <section class="coluna-status coluna-status--em-revisao" aria-labelledby="titulo-em-revisao">
+        <h2 id="titulo-em-revisao">Em revisão</h2>
+        <ul class="lista-tarefas"></ul>
+      </section>
+
+      <section class="coluna-status coluna-status--concluida" aria-labelledby="titulo-concluida">
+        <h2 id="titulo-concluida">Concluída</h2>
+        <ul class="lista-tarefas"></ul>
+      </section>
+
+    </div>
 
   </main>
 
   <footer>
     <p>Ricardo Augusto Lopes Barbosa — Desenvolvimento Frontend, 2026.2</p>
   </footer>
+
+  <script type="module" src="js/main.js"></script>
 
 </body>
 </html>
