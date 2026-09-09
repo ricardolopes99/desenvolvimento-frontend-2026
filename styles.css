@@ -181,6 +181,53 @@ main {
   background-color: var(--cor-superficie);
 }
 
+/* O select repete o tratamento do campo de busca para que os dois controles
+   de texto tenham o mesmo peso visual. width: 100% + border-box (definido no
+   reset) impede que o padding estoure a largura do contêiner. */
+.secao-busca select {
+  width: 100%;
+  min-width: 0;
+  padding: var(--espaco-2);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  font-size: 1rem;
+  color: var(--cor-texto);
+  background-color: var(--cor-superficie);
+}
+
+/* align-self: flex-start impede que o botão estique para a largura toda
+   quando o form vira linha a partir de 40rem. min-height garante o alvo
+   de toque de 44px mesmo com fonte pequena. */
+.botao-limpar {
+  align-self: flex-start;
+  min-height: 2.75rem;
+  padding: var(--espaco-2) var(--espaco-3);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  font-size: 0.9375rem;
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+  cursor: pointer;
+}
+
+.botao-limpar:hover {
+  border-color: var(--cor-foco);
+}
+
+/* Contagem visível: texto discreto, alinhado ao ritmo vertical das seções. */
+.contagem-resultados {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--cor-texto-suave);
+}
+
+/* Enquanto não há texto, o elemento não deve consumir gap do main.
+   Fica no bloco base (e não numa media query) porque o desperdício de
+   espaço vertical é mais caro justamente na tela estreita. */
+.contagem-resultados:empty {
+  display: none;
+}
+
 fieldset {
   border: 1px solid var(--cor-borda);
   border-radius: var(--raio);
@@ -432,6 +479,12 @@ fieldset label {
   }
 
   .secao-busca {
+    grid-column: 1 / -1;
+  }
+
+  /* Sem isto a contagem cairia numa única célula da coluna 1, deixando as
+     outras três vazias naquela linha e desalinhando o texto do resto. */
+  .contagem-resultados {
     grid-column: 1 / -1;
   }
 

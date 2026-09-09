@@ -21,7 +21,8 @@
     <section class="secao-busca" aria-labelledby="titulo-busca-filtros">
       <h2 id="titulo-busca-filtros">Busca e filtros</h2>
 
-      <form>
+      <form id="controles">
+        
         <div>
           <label for="busca-titulo">Buscar por título da tarefa</label>
           <input type="search" id="busca-titulo" name="busca-titulo">
@@ -61,8 +62,19 @@
           <input type="radio" id="prioridade-alta" name="filtro-prioridade" value="alta">
           <label for="prioridade-alta">Alta</label>
         </fieldset>
+        <div>
+          <label for="ordenacao">Ordenar por prazo</label>
+          <select id="ordenacao" name="ordenacao">
+            <option value="prazo-asc" selected>Mais próximo primeiro</option>
+            <option value="prazo-desc">Mais distante primeiro</option>
+          </select>
+        </div>
+           <button type="button" id="limpar-filtros" class="botao-limpar">
+          Limpar filtros
+        </button>  
       </form>
     </section>
+    <p id="contagem-visivel" class="contagem-resultados" aria-hidden="true"></p>
 
     <!-- Mensagem visível dos estados de carregando / vazio / erro.
          Começa oculta: só aparece quando um desses três estados é aplicado. -->
